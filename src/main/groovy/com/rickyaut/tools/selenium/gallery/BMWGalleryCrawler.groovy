@@ -7,64 +7,39 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
 
 WebDriver driver = new ChromeDriver()
-driver.get("http://www.bmw.com/com/en/")
+driver.get("http://www.bmwusa.com/standard/content/allbmws/allbmwsnew.aspx?Series=1,3,4,5,6,7,X1,X3,X5,X6,Z4,M,BMW%20i3")
 
-List<WebElement> vehicleElements = driver.findElements(By.cssSelector("div.topnavi_layer div.content div.layer_content_models div.model"))
+List<WebElement> vehicleElements = driver.findElements(By.cssSelector(".seriesFullWidth .modelSizeForAll"))
 def vehicleObjects = []
 for(WebElement vehicleElement: vehicleElements){
-	WebElement firstA = vehicleElement.findElement(By.xpath("a[1]"))
-	WebElement firstP = vehicleElement.findElement(By.xpath("p[1]"))
-	WebElement thumbnailImage = null;
-	WebElement innerA = null;
-	try{thumbnailImage = firstA?.findElement(By.tagName("img"));}catch(Exception ex){}
-	try{innerA = firstP?.findElement(By.tagName("a"));}catch(Exception ex){}
-	if(firstA && firstP && thumbnailImage&&innerA){
-		def href = firstA?.getAttribute("href");
-		JavascriptExecutor jsExecutor = (JavascriptExecutor)driver;
-		
-		vehicleObjects<<[name: jsExecutor.executeScript("return arguments[0].innerHTML", innerA).trim(),
-						url: href,
-						thumbnailUrl: thumbnailImage.getAttribute("src")]
-	}
+	WebElement thumbnail = vehicleElement.findElement(By.cssSelector("a img.imageSizeForAll"));
+	vehicleObjects<<[name: vehicleElement.findElement(By.tagName("h3")).getText(),
+					url: vehicleElement.findElement(By.cssSelector(".modelHoverMenu .BmwButtonBlue a")).getAttribute("href"),
+					thumbnailUrl: thumbnail.getAttribute("src")]
 } 
 
 for(def vehicleObject : vehicleObjects){
 	driver.get(vehicleObject.url)
 	try{
-		driver.findElement(By.linkText("Images & videos")).click();
-	}catch(Exception ex){
-		try{
-			driver.findElement(By.linkText("Images and videos")).click();
-		}catch(Exception exq){
-			continue;
-		}
-	}
-	def images = []
-	for(WebElement element: driver.findElements(By.cssSelector("ul.category li"))){
-		WebElement image = element.findElement(By.tagName("img"));
-		images<<[description:element.getAttribute("data-description"),
-			thumbnailUrl:image.getAttribute("src"),
-			imageUrl:"http://www.bmw.com/"+element.getAttribute("data-image-medium")?.replaceAll("../", "")]
-	}
-	for(WebElement element: driver.findElements(By.cssSelector("div.category div.thumbImageBox a"))){
-		WebElement thumbnailImage = element.findElement(By.tagName("img"));
-		element.click();
-		WebElement overlay = driver.findElement(By.cssSelector("#mediaGalleryLightboxLayer"));
-		String imageURL = "";
-		List<WebElement> linkElements = driver?.findElements(By.cssSelector("#mediaGalleryLightboxLayer .linklist a.standard:active"));
-		for(WebElement linkElement : linkElements){
-			if(linkElement.getText().contains("1,600") || linkElement.getText().contains("1.600")){
-				imageURL = "http://www.bmw.com/"+linkElement.getAttribute("href")?.replaceAll("../", "");
-				imageURL = imageURL.indexOf("?")>0?imageURL.substring(0, imageURL.indexOf("?")):imageURL;
+		driver.findElement(By.linkText("Media Gallery")).click();
+		def images = []
+		for(WebElement element: driver.findElements(By.cssSelector(".ModelMediaContainer .ModelMedia"))){
+			String style = element.getAttribute("style");
+			int startIndex = "background-image: url(".length();
+			int endIndex = style.indexOf(")")
+			String url = style.substring(startIndex, endIndex)
+			if(url.endsWith("_@316x146.arox")||url.endsWith("_@652x302.arox")){
+				images<<[description:"",
+					thumbnailUrl:url.replaceAll("_@652x302.arox", "_@316x146.arox"),
+					imageUrl:url.replaceAll("_@316x146.", ".").replaceAll("_@652x302.", ".")]
 			}
 		}
-		images<<[description:"",
-			thumbnailUrl:thumbnailImage.getAttribute("src"),
-			imageUrl:imageURL]
-		driver.findElement(By.cssSelector("div#mediaGalleryLightboxLayer div#lightbox div#closeButtonLayer")).click();
+		def videos = [];
+		vehicleObject<<[images: images, videos: videos]
+	}catch(Exception ex){
+		println vehicleObject.url
+		ex.printStackTrace()
 	}
-	def videos = [];
-	vehicleObject<<[images: images, videos: videos]
 }
 def json = new groovy.json.JsonBuilder(vehicleObjects)
 def file = new File("./export/bmw-gallery.json")
