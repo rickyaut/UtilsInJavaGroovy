@@ -1,8 +1,8 @@
 [
     {
-        "name": null,
+        "name": "IS",
         "url": "http://www.lexus.com/lexus-main/models/IS/index.html",
-        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/spacer.gif",
+        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/navigation/vehicles/is.png",
         "images": [
             {
                 "description": "2014 Lexus IS 350 shown in Matador Red Mica with available 18-inch five-spoke alloy wheels",
@@ -207,9 +207,9 @@
         ]
     },
     {
-        "name": null,
+        "name": "ES",
         "url": "http://www.lexus.com/lexus-main/models/ES/index.html",
-        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/spacer.gif",
+        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/navigation/vehicles/es.png",
         "images": [
             {
                 "description": "2014 Lexus ES 350 exterior shown in Matador Red Mica (foreground), Silver Lining Metallic (background)",
@@ -414,9 +414,9 @@
         ]
     },
     {
-        "name": null,
+        "name": "GS",
         "url": "http://www.lexus.com/lexus-main/models/GS/index.html",
-        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/spacer.gif",
+        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/navigation/vehicles/gs.png",
         "images": [
             {
                 "description": "GS shown in Obsidian.",
@@ -831,9 +831,9 @@
         ]
     },
     {
-        "name": null,
+        "name": "LS",
         "url": "http://www.lexus.com/LS/",
-        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/spacer.gif",
+        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/navigation/vehicles/ls.png",
         "images": [
             {
                 "description": "2014 Lexus LS exterior shown in Liquid Platinum with available LED headlamps",
@@ -1188,9 +1188,9 @@
         ]
     },
     {
-        "name": null,
+        "name": "ISC",
         "url": "http://www.lexus.com/lexus-main/models/ISC/index.html",
-        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/spacer.gif",
+        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/navigation/vehicles/isc.png",
         "images": [
             {
                 "description": "2013 Lexus IS C exterior shown in Silver Lining Metallic",
@@ -1375,9 +1375,9 @@
         ]
     },
     {
-        "name": null,
+        "name": "RX",
         "url": "http://www.lexus.com/lexus-main/models/RX/index.html",
-        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/spacer.gif",
+        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/navigation/vehicles/rx.png",
         "images": [
             {
                 "description": "2014 Lexus RX exterior shown in Silver Lining Metallic",
@@ -1692,9 +1692,9 @@
         ]
     },
     {
-        "name": null,
+        "name": "GX",
         "url": "http://www.lexus.com/lexus-main/models/GX/index.html",
-        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/spacer.gif",
+        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/navigation/vehicles/gx.png",
         "images": [
             {
                 "description": "2014 Lexus GX Luxury package shown in Knight's Armor Pearl.",
@@ -1789,9 +1789,9 @@
         ]
     },
     {
-        "name": null,
+        "name": "LX",
         "url": "http://www.lexus.com/lexus-main/models/LX/index.html",
-        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/spacer.gif",
+        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/navigation/vehicles/lx.png",
         "images": [
             {
                 "description": "2014 LX shown in Silver Lining Metallic",
@@ -1906,9 +1906,9 @@
         ]
     },
     {
-        "name": null,
+        "name": "ISF",
         "url": "http://www.lexus.com/lexus-main/models/ISF/index.html",
-        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/spacer.gif",
+        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/navigation/vehicles/isf.png",
         "images": [
             {
                 "description": "2014 Lexus IS F exterior shown in Matador Red Mica",
@@ -2023,9 +2023,9 @@
         ]
     },
     {
-        "name": null,
+        "name": "CT Hybrid",
         "url": "http://www.lexus.com/lexus-main/models/CTh/index.html",
-        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/spacer.gif",
+        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/navigation/vehicles/cth.png",
         "images": [
             {
                 "description": "2013 Lexus CT shown in Obsidian.",
@@ -2265,9 +2265,9 @@
         ]
     },
     {
-        "name": null,
+        "name": "RX Hybrid",
         "url": "http://www.lexus.com/lexus-main/models/RXh/index.html",
-        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/spacer.gif",
+        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/navigation/vehicles/rxh.png",
         "images": [
             {
                 "description": "2014 Lexus RX exterior shown in Silver Lining Metallic",
@@ -2582,9 +2582,9 @@
         ]
     },
     {
-        "name": null,
+        "name": "ES Hybrid",
         "url": "http://www.lexus.com/lexus-main/models/ES/hybrid/",
-        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/spacer.gif",
+        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/navigation/vehicles/esh.png",
         "images": [
             {
                 "description": "2014 Lexus ES 350 exterior shown in Matador Red Mica (foreground), Silver Lining Metallic (background)",
@@ -2789,9 +2789,9 @@
         ]
     },
     {
-        "name": null,
+        "name": "GS Hybrid",
         "url": "http://www.lexus.com/lexus-main/models/GSh/index.html",
-        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/spacer.gif",
+        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/navigation/vehicles/gsh.png",
         "images": [
             {
                 "description": "GS shown in Obsidian.",
@@ -3206,9 +3206,9 @@
         ]
     },
     {
-        "name": null,
+        "name": "LS Hybrid",
         "url": "http://www.lexus.com/lexus-main/models/LS/hybrid",
-        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/spacer.gif",
+        "thumbnailUrl": "http://www.lexus.com/lexus-share/images/navigation/vehicles/lsh.png",
         "images": [
             {
                 "description": "2014 Lexus LS exterior shown in Liquid Platinum with available LED headlamps",

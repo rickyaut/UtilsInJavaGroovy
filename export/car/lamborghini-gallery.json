@@ -1,8 +1,8 @@
 [
     {
-        "name": "LP 700-4\u00A0\u00BB",
         "url": "http://www.lamborghini.com/en/models/aventador-lp-700-4/overview/",
         "thumbnailUrl": "http://cdn.lamborghini.com/content/hookpages/hook_models_av_lp700-4_1000x1000.jpg",
+        "name": "AVENTADOR LP 700-4",
         "images": [
             {
                 "description": "",
@@ -62,9 +62,9 @@
         ]
     },
     {
-        "name": "LP 700-4 Roadster\u00A0\u00BB",
         "url": "http://www.lamborghini.com/en/models/aventador-lp-700-4-roadster/overview/",
         "thumbnailUrl": "http://cdn.lamborghini.com/content/hookpages/hook_av_lp700-4_roadster_1000x1000.jpg",
+        "name": "AVENTADOR LP 700-4 ROADSTER",
         "images": [
             {
                 "description": "",
@@ -154,9 +154,9 @@
         ]
     },
     {
-        "name": "LP 550-2\u00A0\u00BB",
         "url": "http://www.lamborghini.com/en/models/gallardo-lp-550-2/overview/",
         "thumbnailUrl": "http://cdn.lamborghini.com/content/hookpages/hook_models_ga_lp550-2_1000x1000.jpg",
+        "name": "GALLARDO LP 550-2",
         "images": [
             {
                 "description": "",
@@ -191,9 +191,9 @@
         ]
     },
     {
-        "name": "LP 550-2 Spyder\u00A0\u00BB",
         "url": "http://www.lamborghini.com/en/models/gallardo-lp-550-2-spyder/overview/",
         "thumbnailUrl": "http://cdn.lamborghini.com/content/hookpages/hook_models_ga_lp550-2_spy_1000x1000.jpg",
+        "name": "GALLARDO LP 550-2 SPYDER",
         "images": [
             {
                 "description": "",
@@ -228,9 +228,9 @@
         ]
     },
     {
-        "name": "New LP 560-4\u00A0\u00BB",
         "url": "http://www.lamborghini.com/en/models/gallardo-lp-560-4/overview/",
         "thumbnailUrl": "http://cdn.lamborghini.com/content/hookpages/hook_models_gal_lp560-4_1000x1000.jpg",
+        "name": "NEW GALLARDO LP 560-4",
         "images": [
             {
                 "description": "",
@@ -260,9 +260,9 @@
         ]
     },
     {
-        "name": "New LP 560-4 Spyder\u00A0\u00BB",
         "url": "http://www.lamborghini.com/en/models/gallardo-lp-560-4-spyder/overview/",
         "thumbnailUrl": "http://cdn.lamborghini.com/content/hookpages/hook_models_gal_lp560-4_spyder_1000x1000.jpg",
+        "name": "NEW GALLARDO LP 560-4 SPYDER",
         "images": [
             {
                 "description": "",
@@ -297,51 +297,41 @@
         ]
     },
     {
-        "name": "LP 570-4 Superleggera Edizione Tecnica\u00A0\u00BB",
         "url": "http://www.lamborghini.com/en/models/gallardo-lp-570-4-superleggera-edizione-tecnica/overview/",
         "thumbnailUrl": "http://cdn.lamborghini.com/content/hookpages/hook_models_gal_lp570-4_superleg_et_1000x1000.jpg",
+        "name": "GALLARDO LP 570-4 SUPERLEGGERA EDIZIONE TECNICA",
         "images": [
             {
                 "description": "",
-                "thumbnailUrl": "http://cdn.lamborghini.com/renditions/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gallery/192/gal_lp570-4_superleg_et_gal_5_1920x1080.jpg",
-                "imageUrl": "http://cdn.lamborghini.com/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gallery/gal_lp570-4_superleg_et_gal_5_1920x1080.jpg"
+                "thumbnailUrl": "http://cdn.lamborghini.com/renditions/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/192/gal_lp570-4_superleg_et_ov_3_1920x1080.jpg",
+                "imageUrl": "http://cdn.lamborghini.com/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gal_lp570-4_superleg_et_ov_3_1920x1080.jpg"
             },
             {
                 "description": "",
-                "thumbnailUrl": "http://cdn.lamborghini.com/renditions/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gallery/192/gal_lp570-4_superleg_et_gal_1_1920x1080.jpg",
-                "imageUrl": "http://cdn.lamborghini.com/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gallery/gal_lp570-4_superleg_et_gal_1_1920x1080.jpg"
+                "thumbnailUrl": "http://cdn.lamborghini.com/renditions/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/192/gal_lp570-4_superleg_et_ov_1_1920x1080v2.jpg",
+                "imageUrl": "http://cdn.lamborghini.com/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gal_lp570-4_superleg_et_ov_1_1920x1080v2.jpg"
             },
             {
                 "description": "",
-                "thumbnailUrl": "http://cdn.lamborghini.com/renditions/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gallery/192/gal_lp570-4_superleg_et_gal_2_1920x1080.jpg",
-                "imageUrl": "http://cdn.lamborghini.com/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gallery/gal_lp570-4_superleg_et_gal_2_1920x1080.jpg"
+                "thumbnailUrl": "http://cdn.lamborghini.com/renditions/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/192/gal_lp570-4_superleg_et_ov_2_1920x1080.jpg",
+                "imageUrl": "http://cdn.lamborghini.com/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gal_lp570-4_superleg_et_ov_2_1920x1080.jpg"
             },
             {
                 "description": "",
-                "thumbnailUrl": "http://cdn.lamborghini.com/renditions/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gallery/192/gal_lp570-4_superleg_et_gal_3_1920x1080.jpg",
-                "imageUrl": "http://cdn.lamborghini.com/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gallery/gal_lp570-4_superleg_et_gal_3_1920x1080.jpg"
+                "thumbnailUrl": "http://cdn.lamborghini.com/renditions/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/192/gal_lp570-4_superleg_et_ov_3_1920x1080.jpg",
+                "imageUrl": "http://cdn.lamborghini.com/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gal_lp570-4_superleg_et_ov_3_1920x1080.jpg"
             },
             {
                 "description": "",
-                "thumbnailUrl": "http://cdn.lamborghini.com/renditions/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gallery/192/gal_lp570-4_superleg_et_gal_4_1920x1080.jpg",
-                "imageUrl": "http://cdn.lamborghini.com/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gallery/gal_lp570-4_superleg_et_gal_4_1920x1080.jpg"
-            },
-            {
-                "description": "",
-                "thumbnailUrl": "http://cdn.lamborghini.com/renditions/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gallery/192/gal_lp570-4_superleg_et_gal_5_1920x1080.jpg",
-                "imageUrl": "http://cdn.lamborghini.com/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gallery/gal_lp570-4_superleg_et_gal_5_1920x1080.jpg"
-            },
-            {
-                "description": "",
-                "thumbnailUrl": "http://cdn.lamborghini.com/renditions/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gallery/192/gal_lp570-4_superleg_et_gal_1_1920x1080.jpg",
-                "imageUrl": "http://cdn.lamborghini.com/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gallery/gal_lp570-4_superleg_et_gal_1_1920x1080.jpg"
+                "thumbnailUrl": "http://cdn.lamborghini.com/renditions/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/192/gal_lp570-4_superleg_et_ov_1_1920x1080v2.jpg",
+                "imageUrl": "http://cdn.lamborghini.com/content/models/gallardo_lp570-4_superleggera_edizione_tecnica_2012/gal_lp570-4_superleg_et_ov_1_1920x1080v2.jpg"
             }
         ]
     },
     {
-        "name": "LP 570-4 Spyder Performante Edizione Tecnica\u00A0\u00BB",
         "url": "http://www.lamborghini.com/en/models/gallardo-lp-570-4-spyder-performante-edizione-tecnica/overview/",
         "thumbnailUrl": "http://cdn.lamborghini.com/content/hookpages/hook_models_gal_lp570-4_spyder_perf_et_1000x1000.jpg",
+        "name": "GALLARDO LP 570-4 SPYDER PERFORMANTE EDIZIONE TECNICA",
         "images": [
             {
                 "description": "",
@@ -366,9 +356,9 @@
         ]
     },
     {
-        "name": "LP 570-4 Squadra Corse\u00A0\u00BB",
         "url": "http://www.lamborghini.com/en/models/gallardo-lp-570-4-squadra-corse/overview/",
         "thumbnailUrl": "http://cdn.lamborghini.com/content/hookpages/gallardo-sc-hookpage.jpg",
+        "name": "GALLARDO LP 570-4 SQUADRA CORSE",
         "images": [
             {
                 "description": "",
@@ -428,9 +418,9 @@
         ]
     },
     {
-        "name": "LP 720-4 50\u00B0 Anniversario\u00A0\u00BB",
         "url": "http://www.lamborghini.com/en/models/aventador-lp720-4-50-anniversario/overview/",
         "thumbnailUrl": "http://cdn.lamborghini.com/content/models/aventador_lp720-4_50/hook_av-lp720-4_50_1000x1000.jpg",
+        "name": "AVENTADOR LP 720-4 50\u00B0 ANNIVERSARIO",
         "images": [
             {
                 "description": "",
@@ -485,9 +475,9 @@
         ]
     },
     {
-        "name": "Veneno\u00A0\u00BB",
         "url": "http://www.lamborghini.com/en/models/veneno/overview/",
         "thumbnailUrl": "http://cdn.lamborghini.com/content/models/veneno/veneno_hookpage_1000x1000.jpg",
+        "name": "VENENO",
         "images": [
             {
                 "description": "",
@@ -537,9 +527,9 @@
         ]
     },
     {
-        "name": "Aventador J\u00A0\u00BB",
         "url": "http://www.lamborghini.com/en/models/aventador-j/overview/",
         "thumbnailUrl": "http://cdn.lamborghini.com/content/models/aventador_j/hook_models_av_j_1000x1000.jpg",
+        "name": "AVENTADOR J",
         "images": [
             {
                 "description": "",
@@ -604,14 +594,14 @@
         ]
     },
     {
-        "name": "Gallardo Bicolore\u00A0\u00BB",
         "url": "http://www.lamborghini.com/en/models/gallardo-bicolore/",
-        "thumbnailUrl": "http://cdn.lamborghini.com/content/hookpages/hook_models_ga_lp560-4_bico_1000x1000.jpg"
+        "thumbnailUrl": "http://cdn.lamborghini.com/content/hookpages/hook_models_ga_lp560-4_bico_1000x1000.jpg",
+        "name": "GALLARDO BICOLORE"
     },
     {
-        "name": "LP 550-2 Tricolore\u00A0\u00BB",
         "url": "http://www.lamborghini.com/en/models/lp-550-2-tricolore/overview/",
         "thumbnailUrl": "http://cdn.lamborghini.com/content/hookpages/hook_models_ga_lp550-2_tri_1000x1000.jpg",
+        "name": "LP 550-2 TRICOLORE",
         "images": [
             {
                 "description": "",
@@ -641,9 +631,9 @@
         ]
     },
     {
-        "name": "Sesto Elemento\u00A0\u00BB",
         "url": "http://www.lamborghini.com/en/models/sesto-elemento/overview/",
         "thumbnailUrl": "http://cdn.lamborghini.com/content/hookpages/hook_models_sesto_elemento_1000x1000.jpg",
+        "name": "SESTO ELEMENTO",
         "images": [
             {
                 "description": "",
@@ -728,9 +718,9 @@
         ]
     },
     {
-        "name": "Urus\u00A0\u00BB",
         "url": "http://www.lamborghini.com/en/models/urus/overview/",
         "thumbnailUrl": "http://cdn.lamborghini.com/content/hookpages/hook_models_urus_1000x1000.jpg",
+        "name": "URUS",
         "images": [
             {
                 "description": "",
