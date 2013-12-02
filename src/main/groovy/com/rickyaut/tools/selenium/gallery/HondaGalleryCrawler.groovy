@@ -18,7 +18,7 @@ for(WebElement vehicleElement: vehicleElements){
 		def href = modelText.getAttribute("href");
 		JavascriptExecutor jsExecutor = (JavascriptExecutor)driver;
 		
-		vehicleObjects<<[name: modelText.getText().trim(),
+		vehicleObjects<<[name: Utils.getText(driver, modelText).trim(),
 						url: href,
 						thumbnailUrl: modelImage.getAttribute("src")]
 	}

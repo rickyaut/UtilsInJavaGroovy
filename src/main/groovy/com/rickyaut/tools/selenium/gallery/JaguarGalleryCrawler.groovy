@@ -1,18 +1,11 @@
 package com.rickyaut.tools.selenium.gallery
 
 import org.openqa.selenium.By
-import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.support.ui.ExpectedConditions
-import org.openqa.selenium.support.ui.WebDriverWait
 
-String getText(WebDriver driver, WebElement element){
-	JavascriptExecutor js = (JavascriptExecutor)driver;
-	String text = js.executeScript('return $(arguments[0]).text()', element);
-	return text;
-}
+import com.rickyaut.tools.common.Utils
 
 WebDriver driver = new ChromeDriver()
 driver.get("http://www.jaguarusa.com/all-models/all-models/index.html")
@@ -24,7 +17,7 @@ for(WebElement vehicleElement: vehicleElements){
 	sleep(2000)
 	for(WebElement element2 : driver.findElements(By.cssSelector(".tab-item"))){
 		WebElement anchor = element2.findElement(By.cssSelector("a:nth-child(1)"))
-		vehicleObjects<<[name: getText(driver, element2.findElement(By.cssSelector(".tab-header h3"))), 
+		vehicleObjects<<[name: Utils.getText(driver, element2.findElement(By.cssSelector(".tab-header h3"))), 
 						url: anchor.getAttribute("href"),
 						thumbnailUrl: anchor.findElement(By.cssSelector("img")).getAttribute("src")]
 	}

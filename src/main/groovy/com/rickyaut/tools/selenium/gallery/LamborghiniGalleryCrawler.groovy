@@ -1,18 +1,11 @@
 package com.rickyaut.tools.selenium.gallery
 
 import org.openqa.selenium.By
-import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.support.ui.ExpectedConditions
-import org.openqa.selenium.support.ui.WebDriverWait
 
-String getText(WebDriver driver, WebElement element){
-	JavascriptExecutor js = (JavascriptExecutor)driver;
-	String text = js.executeScript('return $(arguments[0]).text()', element);
-	return text;
-}
+import com.rickyaut.tools.common.Utils
 
 WebDriver driver = new ChromeDriver()
 driver.get("http://www.lamborghini.com/en/models/")
@@ -22,7 +15,6 @@ def vehicleObjects = []
 for(WebElement vehicleElement: vehicleElements){
 	def url = vehicleElement.getAttribute("href")
 	def id = vehicleElement.getAttribute("id").replaceAll("-link", "-teaser")
-	//def modelName = getText(driver, vehicleElement)
 	vehicleObjects<<[//name: modelName.replace("»", "").trim(), 
 					url: url,
 					thumbnailUrl: driver.findElement(By.cssSelector("#tx-core4-slidestage-subnavigation-stage #"+id+" img")).getAttribute("src")]
@@ -30,7 +22,7 @@ for(WebElement vehicleElement: vehicleElements){
 
 for(def vehicleObject : vehicleObjects){
 	driver.get(vehicleObject.url)
-	vehicleObject<<[name: driver.findElement(By.cssSelector("nav.grd-inner h1")).getText().trim()]
+	vehicleObject<<[name: Utils.getText(driver, driver.findElement(By.cssSelector("nav.grd-inner h1"))).trim()]
 	try{
 		driver.findElement(By.linkText("GALLERY")).click()
 		def images = []

@@ -8,12 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 
-String getText(WebDriver driver, WebElement element){
-	JavascriptExecutor js = (JavascriptExecutor)driver;
-	String text = js.executeScript('return $(arguments[0]).text()', element);
-	return text;
-}
-
 WebDriver driver = new ChromeDriver()
 driver.get("http://www.lexus.com/models/allVehicles/index.html")
 

@@ -15,7 +15,7 @@ for(WebElement vehicleElement: vehicleElements){
 	if(!url.startsWith("http://")){
 		url ="http://www.ford.com"+url
 	}
-	vehicleObjects<<[name: vehicleElement.findElement(By.cssSelector(".front h3")).getText(), 
+	vehicleObjects<<[name: Utils.getText(driver, vehicleElement.findElement(By.cssSelector(".front h3"))), 
 					url: url,
 					thumbnailUrl: vehicleElement.findElement(By.cssSelector(".front img")).getAttribute("src")]
 } 

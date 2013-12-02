@@ -13,6 +13,9 @@ import java.util.regex.Pattern;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class Utils {
 
@@ -79,6 +82,12 @@ public class Utils {
 
 	public static String encodeString(String s) {
 		return String.format("%x", new BigInteger(s.getBytes()));
+	}
+
+	public String getText(WebDriver driver, WebElement element){
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		String text = (String)js.executeScript("return $(arguments[0]).text()", element);
+		return text;
 	}
 
 }

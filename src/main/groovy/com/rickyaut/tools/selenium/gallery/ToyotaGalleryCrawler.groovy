@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
 
+import com.rickyaut.tools.common.Utils
+
 WebDriver driver = new ChromeDriver()
 driver.get("http://www.toyota.com/all-vehicles/")
 
@@ -14,7 +16,7 @@ for(WebElement vehicleElement: vehicleElements){
 	WebElement innerElement = vehicleElement.findElement(By.cssSelector(".gridItemInner"))
 	def href = innerElement.getAttribute("data-href");
 	def linkedSeries = innerElement.getAttribute("data-linkedseries");
-	vehicleObjects<<[name: vehicleElement.findElement(By.cssSelector(".titleContainer .page-header")).getText(), 
+	vehicleObjects<<[name: Utils.getText(driver, vehicleElement.findElement(By.cssSelector(".titleContainer .page-header"))), 
 					url: "http://www.toyota.com/"+(linkedSeries? linkedSeries:href)+"/photo-gallery.html",
 					thumbnailUrl: vehicleElement.findElement(By.cssSelector("table .carImageContainer img")).getAttribute("src")]
 } 

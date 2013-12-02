@@ -1,18 +1,13 @@
 package com.rickyaut.tools.selenium.gallery
 
 import org.openqa.selenium.By
-import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
 
-def vehicleObjects = []
-String getText(WebDriver driver, WebElement element){
-	JavascriptExecutor js = (JavascriptExecutor)driver;
-	String text = js.executeScript('return $(arguments[0]).text()', element);
-	return text;
-}
+import com.rickyaut.tools.common.Utils
 
+def vehicleObjects = []
 def getBuickGallery(){
 	def brandVehicleObjects = []
 	WebDriver driver = new ChromeDriver()
@@ -69,7 +64,7 @@ def getChevroletGallery(){
 	for(WebElement vehicleElement: vehicleElements){
 		WebElement anchor = vehicleElement.findElement(By.tagName("a"))
 		WebElement image = anchor.findElement(By.cssSelector("img.size_2"))
-		brandVehicleObjects<<[name: vehicleElement.findElement(By.cssSelector(".content h3 a")).getText(),
+		brandVehicleObjects<<[name: Utils.getText(driver, vehicleElement.findElement(By.cssSelector(".content h3 a"))),
 						url: anchor.getAttribute("href"),
 						thumbnailUrl: image.getAttribute("src")]
 	}
@@ -119,7 +114,7 @@ def getCadillacGallery(){
 	for(WebElement vehicleElement: vehicleElements){
 		WebElement anchor = vehicleElement.findElement(By.tagName("a"))
 		WebElement image = anchor.findElement(By.cssSelector("img"))
-		brandVehicleObjects<<[name: vehicleElement.findElement(By.tagName("h3")).getText(),
+		brandVehicleObjects<<[name: Utils.getText(driver, vehicleElement.findElement(By.tagName("h3"))),
 						url: anchor.getAttribute("href"),
 						thumbnailUrl: image.getAttribute("src")]
 	}
@@ -172,7 +167,7 @@ def getGMCGallery(){
 	for(WebElement vehicleElement: vehicleElements){
 		WebElement anchor = vehicleElement.findElement(By.tagName("a"))
 		WebElement image = anchor.findElement(By.cssSelector("img"))
-		brandVehicleObjects<<[name: vehicleElement.findElement(By.tagName("h3")).getText(),
+		brandVehicleObjects<<[name: Utils.getText(driver, vehicleElement.findElement(By.tagName("h3"))),
 						url: anchor.getAttribute("href"),
 						thumbnailUrl: image.getAttribute("src")]
 	}

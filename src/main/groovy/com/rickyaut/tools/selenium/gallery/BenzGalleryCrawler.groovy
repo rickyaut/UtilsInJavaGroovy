@@ -15,7 +15,7 @@ def vehicleObjects = []
 for(WebElement vehicleElement: vehicleElements){
 	WebElement thumbnail = vehicleElement.findElement(By.cssSelector("a.class-track"));
 	for(WebElement modelElement: vehicleElement.findElements(By.cssSelector(".class-list ul li a.model"))){
-		vehicleObjects<<[name: modelElement.getText(),
+		vehicleObjects<<[name: Utils.getText(driver, modelElement),
 			url: modelElement.getAttribute("href"),
 			thumbnailUrl: thumbnail.getAttribute("src")]
 

@@ -13,7 +13,7 @@ List<WebElement> vehicleElements = driver.findElements(By.cssSelector(".seriesFu
 def vehicleObjects = []
 for(WebElement vehicleElement: vehicleElements){
 	WebElement thumbnail = vehicleElement.findElement(By.cssSelector("a img.imageSizeForAll"));
-	vehicleObjects<<[name: vehicleElement.findElement(By.tagName("h3")).getText(),
+	vehicleObjects<<[name: Utils.getText(driver, vehicleElement.findElement(By.tagName("h3"))),
 					url: vehicleElement.findElement(By.cssSelector(".modelHoverMenu .BmwButtonBlue a")).getAttribute("href"),
 					thumbnailUrl: thumbnail.getAttribute("src")]
 } 
