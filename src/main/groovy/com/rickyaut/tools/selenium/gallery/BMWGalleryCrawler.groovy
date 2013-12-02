@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver
 
 WebDriver driver = new ChromeDriver()
 driver.get("http://www.bmwusa.com/standard/content/allbmws/allbmwsnew.aspx?Series=1,3,4,5,6,7,X1,X3,X5,X6,Z4,M,BMW%20i3")
-
+sleep(30000)
 List<WebElement> vehicleElements = driver.findElements(By.cssSelector(".seriesFullWidth .modelSizeForAll"))
 def vehicleObjects = []
 for(WebElement vehicleElement: vehicleElements){
@@ -42,7 +42,7 @@ for(def vehicleObject : vehicleObjects){
 	}
 }
 def json = new groovy.json.JsonBuilder(vehicleObjects)
-def file = new File("./export/bmw-gallery.json")
+def file = new File("./export/car/bmw-gallery.json")
 if(file.exists()){
 	file.delete();
 }

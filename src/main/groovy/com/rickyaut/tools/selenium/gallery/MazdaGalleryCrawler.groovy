@@ -38,7 +38,7 @@ for(def vehicleObject : vehicleObjects){
 	vehicleObject<<[images: images]
 }
 def json = new groovy.json.JsonBuilder(vehicleObjects)
-def file = new File("./export/mazda-gallery.json")
+def file = new File("./export/car/mazda-gallery.json")
 if(file.exists()){
 	file.delete();
 }

@@ -22,13 +22,15 @@ def vehicleObjects = []
 for(WebElement vehicleElement: vehicleElements){
 	def url = vehicleElement.getAttribute("href")
 	def id = vehicleElement.getAttribute("id").replaceAll("-link", "-teaser")
-	vehicleObjects<<[name: getText(driver, vehicleElement), 
+	//def modelName = getText(driver, vehicleElement)
+	vehicleObjects<<[//name: modelName.replace("»", "").trim(), 
 					url: url,
 					thumbnailUrl: driver.findElement(By.cssSelector("#tx-core4-slidestage-subnavigation-stage #"+id+" img")).getAttribute("src")]
 } 
 
 for(def vehicleObject : vehicleObjects){
 	driver.get(vehicleObject.url)
+	vehicleObject<<[name: driver.findElement(By.cssSelector("nav.grd-inner h1")).getText().trim()]
 	try{
 		driver.findElement(By.linkText("GALLERY")).click()
 		def images = []
@@ -43,7 +45,7 @@ for(def vehicleObject : vehicleObjects){
 	}
 }
 def json = new groovy.json.JsonBuilder(vehicleObjects)
-def file = new File("./export/lamborghini-gallery.json")
+def file = new File("./export/car/lamborghini-gallery.json")
 if(file.exists()){
 	file.delete();
 }

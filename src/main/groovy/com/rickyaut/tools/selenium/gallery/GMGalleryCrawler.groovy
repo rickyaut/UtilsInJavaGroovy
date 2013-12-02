@@ -52,7 +52,12 @@ def getBuickGallery(){
 		}catch(Exception ex){ex.printStackTrace()}
 	}
 	driver.quit();
-	return brandVehicleObjects;
+	def json = new groovy.json.JsonBuilder(brandVehicleObjects)
+	def file = new File("./export/car/gm-buick-gallery.json")
+	if(file.exists()){
+		file.delete();
+	}
+	file << json.toPrettyString()
 }
 
 def getChevroletGallery(){
@@ -97,7 +102,12 @@ def getChevroletGallery(){
 		}
 	}
 	driver.quit();
-	return brandVehicleObjects;
+	def json = new groovy.json.JsonBuilder(brandVehicleObjects)
+	def file = new File("./export/car/gm-chevrolet-gallery.json")
+	if(file.exists()){
+		file.delete();
+	}
+	file << json.toPrettyString()
 }
 
 def getCadillacGallery(){
@@ -145,7 +155,12 @@ def getCadillacGallery(){
 		}catch(Exception ex){ex.printStackTrace()}
 	}
 	driver.quit();
-	return brandVehicleObjects;
+	def json = new groovy.json.JsonBuilder(brandVehicleObjects)
+	def file = new File("./export/car/gm-cadillac-gallery.json")
+	if(file.exists()){
+		file.delete();
+	}
+	file << json.toPrettyString()
 }
 
 def getGMCGallery(){
@@ -193,17 +208,16 @@ def getGMCGallery(){
 		}catch(Exception ex){ex.printStackTrace()}
 	}
 	driver.quit();
-	return brandVehicleObjects;
+	def json = new groovy.json.JsonBuilder(brandVehicleObjects)
+	def file = new File("./export/car/gm-gmc-gallery.json")
+	if(file.exists()){
+		file.delete();
+	}
+	file << json.toPrettyString()
 }
 
-vehicleObjects.addAll(getBuickGallery());
-vehicleObjects.addAll(getChevroletGallery());
-vehicleObjects.addAll(getCadillacGallery());
-vehicleObjects.addAll(getGMCGallery());
+getBuickGallery();
+getChevroletGallery();
+getCadillacGallery();
+getGMCGallery();
 
-def json = new groovy.json.JsonBuilder(vehicleObjects)
-def file = new File("./export/gm-gallery.json")
-if(file.exists()){
-	file.delete();
-}
-file << json.toPrettyString()

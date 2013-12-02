@@ -21,9 +21,10 @@ List<WebElement> vehicleElements = driver.findElements(By.cssSelector("#allVehic
 def vehicleObjects = []
 for(WebElement vehicleElement: vehicleElements){
 	def image = vehicleElement.findElement(By.cssSelector("img"))
-	vehicleObjects<<[name: image.getAttribute("IS"), 
+	def modelName = image.getAttribute("alt")
+	vehicleObjects<<[name: modelName, 
 					url: vehicleElement.getAttribute("href"),
-					thumbnailUrl: image.getAttribute("src")]
+					thumbnailUrl: "http://www.lexus.com/lexus-share/images/navigation/vehicles/"+modelName.toLowerCase().replaceAll(" hybrid", "h")+".png"]
 } 
 
 for(def vehicleObject : vehicleObjects){
@@ -39,7 +40,7 @@ for(def vehicleObject : vehicleObjects){
 	vehicleObject<<[images: images]
 }
 def json = new groovy.json.JsonBuilder(vehicleObjects)
-def file = new File("./export/lexus-gallery.json")
+def file = new File("./export/car/lexus-gallery.json")
 if(file.exists()){
 	file.delete();
 }

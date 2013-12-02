@@ -34,7 +34,7 @@ for(def vehicleObject : vehicleObjects){
 			for(WebElement element : driver.findElements(By.linkText("View gallery"))){
 				element.click();
 				(new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".modal-full-bleed #modal-close")))
-				for(def element2 : driver.findElements(By.cssSelector(".carousel-viewport .carousel-items .global-gallery-image"))){
+				for(def element2 : driver.findElements(By.cssSelector("#modal .carousel-viewport .carousel-items .global-gallery-image"))){
 					String imageURL = element2.findElement(By.cssSelector("img")).getAttribute("src")
 					images<<[description: getText(driver, element2.findElement(By.cssSelector("h5"))),
 						thumbnailUrl: imageURL.replaceAll("1280", "230"),
@@ -51,7 +51,7 @@ for(def vehicleObject : vehicleObjects){
 	}
 }
 def json = new groovy.json.JsonBuilder(vehicleObjects)
-def file = new File("./export/audi-gallery.json")
+def file = new File("./export/car/audi-gallery.json")
 if(file.exists()){
 	file.delete();
 }

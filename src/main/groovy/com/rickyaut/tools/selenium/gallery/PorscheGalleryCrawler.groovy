@@ -18,7 +18,7 @@ driver.get("http://www.porsche.com/usa/")
 List<WebElement> vehicleElements = driver.findElements(By.cssSelector(".m-01-menu-item .m-01-sub-menu a.m-01-model-figure"))
 def vehicleObjects = []
 for(WebElement vehicleElement: vehicleElements){
-	vehicleObjects<<[name: getText(driver, vehicleElement), 
+	vehicleObjects<<[name: getText(driver, vehicleElement).trim(), 
 					url: vehicleElement.getAttribute("href"),
 					thumbnailUrl: vehicleElement.findElement(By.tagName("img")).getAttribute("data-image-src")]
 } 
@@ -40,7 +40,7 @@ for(def vehicleObject : vehicleObjects){
 	}catch(Exception ex){}
 }
 def json = new groovy.json.JsonBuilder(vehicleObjects)
-def file = new File("./export/porsche-gallery.json")
+def file = new File("./export/car/porsche-gallery.json")
 if(file.exists()){
 	file.delete();
 }

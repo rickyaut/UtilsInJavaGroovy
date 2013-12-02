@@ -37,7 +37,7 @@ for(def vehicleObject : vehicleObjects){
 	try{
 		def images = []
 		for(WebElement element : driver.findElements(By.cssSelector(".gallery-media img"))){
-			String imageURL = element.getAttribute("data-desktop-src")
+			String imageURL = "http://www.jaguarusa.com"+element.getAttribute("data-desktop-src")
 			images<<[description: element.getAttribute("alt"),
 				thumbnailUrl: imageURL.replaceAll("_desktop_1366x769.jpg", "_gallerythumbnail_195x110.jpg"),
 				imageUrl: imageURL ]
@@ -49,7 +49,7 @@ for(def vehicleObject : vehicleObjects){
 
 }
 def json = new groovy.json.JsonBuilder(vehicleObjects)
-def file = new File("./export/jaguar-gallery.json")
+def file = new File("./export/car/jaguar-gallery.json")
 if(file.exists()){
 	file.delete();
 }
