@@ -17,7 +17,7 @@ def getBuickGallery(){
 	for(WebElement vehicleElement: vehicleElements){
 		WebElement anchor = vehicleElement.findElement(By.tagName("a"))
 		WebElement image = anchor.findElement(By.tagName("img"))
-		brandVehicleObjects<<[name: anchor.getAttribute("title"),
+		brandVehicleObjects<<[name: anchor.getAttribute("title").replaceAll("2014", "").replaceAll("Buick", ""),
 						url: anchor.getAttribute("href"),
 						thumbnailUrl: image.getAttribute("src")]
 	}
@@ -29,7 +29,7 @@ def getBuickGallery(){
 			def exteriorImages = []
 			for(WebElement element: driver.findElements(By.cssSelector(".content ul.thumbnails li a"))){
 				WebElement image = element.findElement(By.tagName("img"));
-				exteriorImages<<[description:element.getAttribute("title"),
+				exteriorImages<<[description:element.getAttribute("title").replaceAll("|2014 BUICK", "").trim(),
 					thumbnailUrl:image.getAttribute("src"),
 					imageUrl:element.getAttribute("href")]
 			}
@@ -37,7 +37,7 @@ def getBuickGallery(){
 			def interiorImages = []
 			for(WebElement element: driver.findElements(By.cssSelector(".content ul.thumbnails li a"))){
 				WebElement image = element.findElement(By.tagName("img"));
-				interiorImages<<[description:element.getAttribute("title"),
+				interiorImages<<[description:element.getAttribute("title").replaceAll("|2014 BUICK", "").trim(),
 					thumbnailUrl:image.getAttribute("src"),
 					imageUrl:element.getAttribute("href")]
 			}

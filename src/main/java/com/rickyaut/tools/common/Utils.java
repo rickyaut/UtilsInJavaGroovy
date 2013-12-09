@@ -84,7 +84,7 @@ public class Utils {
 		return String.format("%x", new BigInteger(s.getBytes()));
 	}
 
-	public String getText(WebDriver driver, WebElement element){
+	public static String getText(WebDriver driver, WebElement element){
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		String text = (String)js.executeScript("return $(arguments[0]).text()", element);
 		return text;

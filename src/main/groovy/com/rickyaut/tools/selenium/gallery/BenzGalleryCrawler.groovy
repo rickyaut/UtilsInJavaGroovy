@@ -23,7 +23,6 @@ for(WebElement vehicleElement: vehicleElements){
 } 
 
 for(def vehicleObject : vehicleObjects){
-	println vehicleObject.url
 	driver.get(vehicleObject.url)
 	try{
 		driver.findElement(By.cssSelector(".liquid-wrapper .gallery a")).click();
