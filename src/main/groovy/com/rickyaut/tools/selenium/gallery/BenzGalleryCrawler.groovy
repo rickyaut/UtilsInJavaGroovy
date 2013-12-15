@@ -7,17 +7,23 @@ import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 
+import com.rickyaut.tools.common.Utils
+
 WebDriver driver = new ChromeDriver()
 driver.get("http://www.mbusa.com/mercedes/vehicles")
 
 List<WebElement> vehicleElements = driver.findElements(By.cssSelector(".bodystyle-class"))
 def vehicleObjects = []
 for(WebElement vehicleElement: vehicleElements){
-	WebElement thumbnail = vehicleElement.findElement(By.cssSelector("a.class-track"));
+	WebElement thumbnail = vehicleElement.findElement(By.cssSelector("a.class-track img.vehicle-image"));
 	for(WebElement modelElement: vehicleElement.findElements(By.cssSelector(".class-list ul li a.model"))){
-		vehicleObjects<<[name: Utils.getText(driver, modelElement),
-			url: modelElement.getAttribute("href"),
-			thumbnailUrl: thumbnail.getAttribute("src")]
+		try{
+			vehicleObjects<<[name: Utils.getText(driver, modelElement),
+				url: modelElement.getAttribute("href"),
+				thumbnailUrl: thumbnail.getAttribute("src")]
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
 
 	}
 } 
@@ -53,7 +59,7 @@ for(def vehicleObject : vehicleObjects){
 		ex.printStackTrace()
 	}
 }
-def json = new groovy.json.JsonBuilder(vehicleObjects)
+def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: vehicleObjects])
 def file = new File("./export/car/benz-gallery.json")
 if(file.exists()){
 	file.delete();

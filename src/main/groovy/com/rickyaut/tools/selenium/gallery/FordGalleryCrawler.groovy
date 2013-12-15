@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
 
+import com.rickyaut.tools.common.Utils
+
 WebDriver driver = new ChromeDriver()
 driver.get("http://www.ford.com/vehicles/")
 
@@ -15,7 +17,7 @@ for(WebElement vehicleElement: vehicleElements){
 	if(!url.startsWith("http://")){
 		url ="http://www.ford.com"+url
 	}
-	vehicleObjects<<[name: Utils.getText(driver, vehicleElement.findElement(By.cssSelector(".front h3"))), 
+	vehicleObjects<<[name: vehicleElement.findElement(By.cssSelector(".front h3")).getText(), 
 					url: url,
 					thumbnailUrl: vehicleElement.findElement(By.cssSelector(".front img")).getAttribute("src")]
 } 
@@ -55,7 +57,8 @@ for(def vehicleObject : vehicleObjects){
 		}
 	}
 }
-def json = new groovy.json.JsonBuilder(vehicleObjects)
+def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: vehicleObjects])
+
 def file = new File("./export/car/ford-gallery.json")
 if(file.exists()){
 	file.delete();

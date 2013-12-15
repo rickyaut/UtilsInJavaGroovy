@@ -28,7 +28,7 @@ for(def vehicleObject : vehicleObjects){
 	def videos = [];
 	vehicleObject<<[images: images, videos: videos]
 }
-def json = new groovy.json.JsonBuilder(vehicleObjects)
+def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: vehicleObjects])
 def file = new File("./export/car/maserati-gallery.json")
 if(file.exists()){
 	file.delete();

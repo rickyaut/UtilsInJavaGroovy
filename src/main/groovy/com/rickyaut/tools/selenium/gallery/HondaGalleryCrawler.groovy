@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
 
+import com.rickyaut.tools.common.Utils
+
 WebDriver driver = new ChromeDriver()
 driver.get("http://automobiles.honda.com/all-models.aspx")
 
@@ -18,7 +20,7 @@ for(WebElement vehicleElement: vehicleElements){
 		def href = modelText.getAttribute("href");
 		JavascriptExecutor jsExecutor = (JavascriptExecutor)driver;
 		
-		vehicleObjects<<[name: Utils.getText(driver, modelText).trim(),
+		vehicleObjects<<[name: modelText.getText().trim(),
 						url: href,
 						thumbnailUrl: modelImage.getAttribute("src")]
 	}
@@ -55,7 +57,7 @@ for(def vehicleObject : vehicleObjects){
 	def videos = [];
 	vehicleObject<<[interiorImages: interiorImages, exteriorImages: exteriorImages, videos: videos]
 }
-def json = new groovy.json.JsonBuilder(vehicleObjects)
+def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: vehicleObjects])
 def file = new File("./export/car/honda-gallery.json")
 if(file.exists()){
 	file.delete();

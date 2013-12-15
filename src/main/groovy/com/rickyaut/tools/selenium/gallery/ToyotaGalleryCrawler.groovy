@@ -16,7 +16,7 @@ for(WebElement vehicleElement: vehicleElements){
 	WebElement innerElement = vehicleElement.findElement(By.cssSelector(".gridItemInner"))
 	def href = innerElement.getAttribute("data-href");
 	def linkedSeries = innerElement.getAttribute("data-linkedseries");
-	vehicleObjects<<[name: Utils.getText(driver, vehicleElement.findElement(By.cssSelector(".titleContainer .page-header"))), 
+	vehicleObjects<<[name: Utils.getText(driver, vehicleElement.findElement(By.cssSelector(".titleContainer .page-header"))).trim(), 
 					url: "http://www.toyota.com/"+(linkedSeries? linkedSeries:href)+"/photo-gallery.html",
 					thumbnailUrl: vehicleElement.findElement(By.cssSelector("table .carImageContainer img")).getAttribute("src")]
 } 
@@ -35,7 +35,7 @@ for(def vehicleObject : vehicleObjects){
 	}
 	vehicleObject<<[images: images, videos: videos]
 }
-def json = new groovy.json.JsonBuilder(vehicleObjects)
+def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: vehicleObjects])
 def file = new File("./export/car/toyota-gallery.json")
 if(file.exists()){
 	file.delete();

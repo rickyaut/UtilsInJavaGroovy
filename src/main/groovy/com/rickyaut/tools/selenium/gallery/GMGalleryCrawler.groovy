@@ -47,7 +47,7 @@ def getBuickGallery(){
 		}catch(Exception ex){ex.printStackTrace()}
 	}
 	driver.quit();
-	def json = new groovy.json.JsonBuilder(brandVehicleObjects)
+	def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: brandVehicleObjects])
 	def file = new File("./export/car/gm-buick-gallery.json")
 	if(file.exists()){
 		file.delete();
@@ -64,7 +64,7 @@ def getChevroletGallery(){
 	for(WebElement vehicleElement: vehicleElements){
 		WebElement anchor = vehicleElement.findElement(By.tagName("a"))
 		WebElement image = anchor.findElement(By.cssSelector("img.size_2"))
-		brandVehicleObjects<<[name: Utils.getText(driver, vehicleElement.findElement(By.cssSelector(".content h3 a"))),
+		brandVehicleObjects<<[name: vehicleElement.findElement(By.cssSelector(".content h3 a")).getText(),
 						url: anchor.getAttribute("href"),
 						thumbnailUrl: image.getAttribute("src")]
 	}
@@ -97,7 +97,7 @@ def getChevroletGallery(){
 		}
 	}
 	driver.quit();
-	def json = new groovy.json.JsonBuilder(brandVehicleObjects)
+	def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: brandVehicleObjects])
 	def file = new File("./export/car/gm-chevrolet-gallery.json")
 	if(file.exists()){
 		file.delete();
@@ -114,43 +114,46 @@ def getCadillacGallery(){
 	for(WebElement vehicleElement: vehicleElements){
 		WebElement anchor = vehicleElement.findElement(By.tagName("a"))
 		WebElement image = anchor.findElement(By.cssSelector("img"))
-		brandVehicleObjects<<[name: Utils.getText(driver, vehicleElement.findElement(By.tagName("h3"))),
+		brandVehicleObjects<<[name: vehicleElement.findElement(By.tagName("h3")).getText(),
 						url: anchor.getAttribute("href"),
 						thumbnailUrl: image.getAttribute("src")]
 	}
 	
 	for(def vehicleObject : brandVehicleObjects){
-		try{
-			driver.get(vehicleObject.url)
-			driver.findElement(By.linkText("PHOTOS & VIDEOS")).click();
-			def interiorImages = []
-			for(WebElement element: driver.findElements(By.cssSelector(".content .thumbnails ul.gallery li a"))){
-				String href = element.getAttribute("href")
-				String imageid = href.substring(href.indexOf("#")+1)
-				WebElement thumbnail = element.findElement(By.tagName("img"));
-				WebElement image = driver.findElement(By.cssSelector("dt#"+imageid+" img"))
-				interiorImages<<[description:image.getAttribute("alt"),
-					thumbnailUrl:thumbnail.getAttribute("src"),
-					imageUrl:image.getAttribute("src")]
-			}
-			driver.findElement(By.cssSelector(".mod li a[title='Exterior']")).click();
-			def exteriorImages = []
-			for(WebElement element: driver.findElements(By.cssSelector(".content .thumbnails ul.gallery li a"))){
-				String href = element.getAttribute("href")
-				String imageid = href.substring(href.indexOf("#")+1)
-				WebElement thumbnail = element.findElement(By.tagName("img"));
-				WebElement image = driver.findElement(By.cssSelector("dt#"+imageid+" img"))
-				exteriorImages<<[description:image.getAttribute("alt"),
-					thumbnailUrl:thumbnail.getAttribute("src"),
-					imageUrl:image.getAttribute("src")]
-			}
-			def videos = [];
-			vehicleObject<<[exteriorImages: exteriorImages, interiorImages: interiorImages, videos: videos]
-		
-		}catch(Exception ex){ex.printStackTrace()}
+		for(int index=0; index<5; index++){
+			try{
+				driver.get(vehicleObject.url)
+				driver.findElement(By.linkText("PHOTOS & VIDEOS")).click();
+				def interiorImages = []
+				for(WebElement element: driver.findElements(By.cssSelector(".content .thumbnails ul.gallery li a"))){
+					String href = element.getAttribute("href")
+					String imageid = href.substring(href.indexOf("#")+1)
+					WebElement thumbnail = element.findElement(By.tagName("img"));
+					WebElement image = driver.findElement(By.cssSelector("dt#"+imageid+" img"))
+					interiorImages<<[description:image.getAttribute("alt"),
+						thumbnailUrl:thumbnail.getAttribute("src"),
+						imageUrl:image.getAttribute("src")]
+				}
+				driver.findElement(By.cssSelector(".mod li a[title='Exterior']")).click();
+				def exteriorImages = []
+				for(WebElement element: driver.findElements(By.cssSelector(".content .thumbnails ul.gallery li a"))){
+					String href = element.getAttribute("href")
+					String imageid = href.substring(href.indexOf("#")+1)
+					WebElement thumbnail = element.findElement(By.tagName("img"));
+					WebElement image = driver.findElement(By.cssSelector("dt#"+imageid+" img"))
+					exteriorImages<<[description:image.getAttribute("alt"),
+						thumbnailUrl:thumbnail.getAttribute("src"),
+						imageUrl:image.getAttribute("src")]
+				}
+				def videos = [];
+				vehicleObject<<[exteriorImages: exteriorImages, interiorImages: interiorImages, videos: videos]
+				break;
+			}catch(Exception ex){ex.printStackTrace()}
+	
+		}
 	}
 	driver.quit();
-	def json = new groovy.json.JsonBuilder(brandVehicleObjects)
+	def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: brandVehicleObjects])
 	def file = new File("./export/car/gm-cadillac-gallery.json")
 	if(file.exists()){
 		file.delete();
@@ -167,43 +170,46 @@ def getGMCGallery(){
 	for(WebElement vehicleElement: vehicleElements){
 		WebElement anchor = vehicleElement.findElement(By.tagName("a"))
 		WebElement image = anchor.findElement(By.cssSelector("img"))
-		brandVehicleObjects<<[name: Utils.getText(driver, vehicleElement.findElement(By.tagName("h3"))),
+		brandVehicleObjects<<[name: vehicleElement.findElement(By.tagName("h3")).getText(),
 						url: anchor.getAttribute("href"),
 						thumbnailUrl: image.getAttribute("src")]
 	}
 	
 	for(def vehicleObject : brandVehicleObjects){
-		try{
-			driver.get(vehicleObject.url)
-			driver.findElement(By.linkText("GALLERY")).click();
-			def interiorImages = []
-			for(WebElement element: driver.findElements(By.cssSelector(".content .thumbnails ul.gallery li a"))){
-				String href = element.getAttribute("href")
-				String imageid = href.substring(href.indexOf("#")+1)
-				WebElement thumbnail = element.findElement(By.tagName("img"));
-				WebElement image = driver.findElement(By.cssSelector("dt#renamed-"+imageid+" img"))
-				interiorImages<<[description:image.getAttribute("alt"),
-					thumbnailUrl:thumbnail.getAttribute("src"),
-					imageUrl:image.getAttribute("src")]
-			}
-			driver.findElement(By.cssSelector(".mod li a[title='INTERIOR']")).click();
-			def exteriorImages = []
-			for(WebElement element: driver.findElements(By.cssSelector(".content .thumbnails ul.gallery li a"))){
-				String href = element.getAttribute("href")
-				String imageid = href.substring(href.indexOf("#")+1)
-				WebElement thumbnail = element.findElement(By.tagName("img"));
-				WebElement image = driver.findElement(By.cssSelector("dt#renamed-"+imageid+" img"))
-				exteriorImages<<[description:image.getAttribute("alt"),
-					thumbnailUrl:thumbnail.getAttribute("src"),
-					imageUrl:image.getAttribute("src")]
-			}
-			def videos = [];
-			vehicleObject<<[exteriorImages: exteriorImages, interiorImages: interiorImages, videos: videos]
-		
-		}catch(Exception ex){ex.printStackTrace()}
+		for(int index=0; index<5; index++){
+			try{
+				driver.get(vehicleObject.url)
+				driver.findElement(By.linkText("GALLERY")).click();
+				def interiorImages = []
+				for(WebElement element: driver.findElements(By.cssSelector(".content .thumbnails ul.gallery li a"))){
+					String href = element.getAttribute("href")
+					String imageid = href.substring(href.indexOf("#")+1)
+					WebElement thumbnail = element.findElement(By.tagName("img"));
+					WebElement image = driver.findElement(By.cssSelector("dt#renamed-"+imageid+" img"))
+					interiorImages<<[description:image.getAttribute("alt"),
+						thumbnailUrl:thumbnail.getAttribute("src"),
+						imageUrl:image.getAttribute("src")]
+				}
+				driver.findElement(By.cssSelector(".mod li a[title='INTERIOR']")).click();
+				def exteriorImages = []
+				for(WebElement element: driver.findElements(By.cssSelector(".content .thumbnails ul.gallery li a"))){
+					String href = element.getAttribute("href")
+					String imageid = href.substring(href.indexOf("#")+1)
+					WebElement thumbnail = element.findElement(By.tagName("img"));
+					WebElement image = driver.findElement(By.cssSelector("dt#renamed-"+imageid+" img"))
+					exteriorImages<<[description:image.getAttribute("alt"),
+						thumbnailUrl:thumbnail.getAttribute("src"),
+						imageUrl:image.getAttribute("src")]
+				}
+				def videos = [];
+				vehicleObject<<[exteriorImages: exteriorImages, interiorImages: interiorImages, videos: videos]
+				break;
+			}catch(Exception ex){ex.printStackTrace()}
+	
+		}
 	}
 	driver.quit();
-	def json = new groovy.json.JsonBuilder(brandVehicleObjects)
+	def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: brandVehicleObjects])
 	def file = new File("./export/car/gm-gmc-gallery.json")
 	if(file.exists()){
 		file.delete();
@@ -211,8 +217,8 @@ def getGMCGallery(){
 	file << json.toPrettyString()
 }
 
-getBuickGallery();
-getChevroletGallery();
-getCadillacGallery();
+//getBuickGallery();
+//getChevroletGallery();
+//getCadillacGallery();
 getGMCGallery();
 

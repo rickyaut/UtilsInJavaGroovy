@@ -1,10 +1,11 @@
 package com.rickyaut.tools.selenium.gallery
 
 import org.openqa.selenium.By
-import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
+
+import com.rickyaut.tools.common.Utils
 
 WebDriver driver = new ChromeDriver()
 driver.get("http://www.bmwusa.com/standard/content/allbmws/allbmwsnew.aspx?Series=1,3,4,5,6,7,X1,X3,X5,X6,Z4,M,BMW%20i3")
@@ -41,7 +42,7 @@ for(def vehicleObject : vehicleObjects){
 		ex.printStackTrace()
 	}
 }
-def json = new groovy.json.JsonBuilder(vehicleObjects)
+def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: vehicleObjects])
 def file = new File("./export/car/bmw-gallery.json")
 if(file.exists()){
 	file.delete();

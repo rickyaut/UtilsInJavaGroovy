@@ -35,7 +35,7 @@ void getCarGallery(){
 		}
 		vehicleObject<<[images: images]
 	}
-	def json = new groovy.json.JsonBuilder(vehicleObjects)
+	def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: vehicleObjects])
 	def file = new File("./export/car/volvo-gallery.json")
 	if(file.exists()){
 		file.delete();
@@ -67,7 +67,7 @@ void getTruckGallery(){
 		}
 		vehicleObject<<[images: images]
 	}
-	def json = new groovy.json.JsonBuilder(vehicleObjects)
+	def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: vehicleObjects])
 	def file = new File("./export/truck/volvo-gallery.json")
 	if(file.exists()){
 		file.delete();
@@ -76,5 +76,5 @@ void getTruckGallery(){
 	driver.quit();
 }
 
-//getCarGallery();
+getCarGallery();
 getTruckGallery();
