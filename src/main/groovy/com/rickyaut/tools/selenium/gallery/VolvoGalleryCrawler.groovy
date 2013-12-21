@@ -24,24 +24,27 @@ void getCarGallery(){
 						thumbnailUrl: driver.findElement(By.cssSelector(".flyout-link img")).getAttribute("src")]
 	}
 	
+GroovyUtils.mergeExistingJSONIntoVehicleObjects("./export/car/volvo-gallery.json", vehicleObjects);
 	for(def vehicleObject : vehicleObjects){
-		driver.get(vehicleObject.url)
-		driver.findElement(By.linkText("Photos")).click();
-		def images = []
-		for(WebElement element : driver.findElements(By.cssSelector("#thumbnail-container li a"))){
-			images<<[description: "",
-				thumbnailUrl: element.findElement(By.cssSelector("img")).getAttribute("src"),
-				imageUrl: element.getAttribute("href") ]
+		if(!vehicleObject.images && !vehicleObject.interiorImages && !vehicleObject.exteriorImages){
+			updateCarImages(driver, vehicleObject)
 		}
-		vehicleObject<<[images: images]
 	}
-	def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: vehicleObjects])
-	def file = new File("./export/car/volvo-gallery.json")
-	if(file.exists()){
-		file.delete();
-	}
-	file << json.toPrettyString()
+GroovyUtils.exportToJsonFile(vehicleObjects, "./export/car/volvo-gallery.json")
 	driver.quit();
+}
+
+private updateCarImages(WebDriver driver, vehicleObject) {
+	driver.get(vehicleObject.url)
+	driver.findElement(By.linkText("Photos")).click();
+	def images = []
+	for(WebElement element : driver.findElements(By.cssSelector("#thumbnail-container li a"))){
+		images<<[description: "",
+			thumbnailUrl: element.findElement(By.cssSelector("img")).getAttribute("src"),
+			imageUrl: element.getAttribute("href") ]
+	}
+	vehicleObject<<[images: images]
+	return vehicleObject
 }
 
 
@@ -57,23 +60,26 @@ void getTruckGallery(){
 						thumbnailUrl: vehicleElement.findElement(By.cssSelector("img")).getAttribute("src")]
 	}
 	
+GroovyUtils.mergeExistingJSONIntoVehicleObjects("./export/truck/volvo-gallery.json", vehicleObjects);
 	for(def vehicleObject : vehicleObjects){
-		driver.get(vehicleObject.url)
-		def images = []
-		for(WebElement element : driver.findElements(By.cssSelector(".product-gallery-thumbnails img"))){
-			images<<[description: "",
-				thumbnailUrl: element.getAttribute("src"),
-				imageUrl: element.getAttribute("src").replaceAll("/thumbs/120x69_", "/892x438_") ]
+		if(!vehicleObject.images && !vehicleObject.interiorImages && !vehicleObject.exteriorImages){
+			updateTruckImages(driver, vehicleObject)
 		}
-		vehicleObject<<[images: images]
 	}
-	def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: vehicleObjects])
-	def file = new File("./export/truck/volvo-gallery.json")
-	if(file.exists()){
-		file.delete();
-	}
-	file << json.toPrettyString()
+GroovyUtils.exportToJsonFile(vehicleObjects, "./export/truck/volvo-gallery.json")
 	driver.quit();
+}
+
+private updateTruckImages(WebDriver driver, vehicleObject) {
+	driver.get(vehicleObject.url)
+	def images = []
+	for(WebElement element : driver.findElements(By.cssSelector(".product-gallery-thumbnails img"))){
+		images<<[description: "",
+			thumbnailUrl: element.getAttribute("src"),
+			imageUrl: element.getAttribute("src").replaceAll("/thumbs/120x69_", "/892x438_") ]
+	}
+	vehicleObject<<[images: images]
+	return vehicleObject
 }
 
 getCarGallery();

@@ -21,7 +21,15 @@ for(WebElement vehicleElement: vehicleElements){
 					thumbnailUrl: "http://www.lexus.com/lexus-share/images/navigation/vehicles/"+modelName.toLowerCase().replaceAll(" hybrid", "h")+".png"]
 } 
 
+GroovyUtils.mergeExistingJSONIntoVehicleObjects("./export/car/lexus-gallery.json", vehicleObjects);
 for(def vehicleObject : vehicleObjects){
+	if(!vehicleObject.images && !vehicleObject.interiorImages && !vehicleObject.exteriorImages){
+		updateVehicleImages(driver, vehicleObject)
+	}
+}
+GroovyUtils.exportToJsonFile(vehicleObjects, "./export/car/lexus-gallery.json")
+
+private updateVehicleImages(WebDriver driver, vehicleObject) {
 	driver.get(vehicleObject.url)
 	driver.get(driver.findElement(By.cssSelector("li.gallery a")).getAttribute("href"))
 	def images = []
@@ -32,10 +40,5 @@ for(def vehicleObject : vehicleObjects){
 			imageUrl: imageURL.replaceAll("_227x121.jpg", "_1024x576.jpg") ]
 	}
 	vehicleObject<<[images: images]
+	return vehicleObject
 }
-def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: vehicleObjects])
-def file = new File("./export/car/lexus-gallery.json")
-if(file.exists()){
-	file.delete();
-}
-file << json.toPrettyString()

@@ -86,7 +86,8 @@ public class Utils {
 
 	public static String getText(WebDriver driver, WebElement element){
 		JavascriptExecutor js = (JavascriptExecutor)driver;
-		String text = (String)js.executeScript("return $(arguments[0]).text()", element);
+		//String text = (String)js.executeScript("return $(arguments[0]).text()", element);
+		String text = (String)js.executeScript("return arguments[0].textContent", element);
 		return text;
 	}
 

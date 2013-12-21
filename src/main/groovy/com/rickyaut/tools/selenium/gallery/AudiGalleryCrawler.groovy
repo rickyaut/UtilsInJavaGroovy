@@ -1,5 +1,8 @@
 package com.rickyaut.tools.selenium.gallery
 
+import groovy.json.JsonSlurper
+
+import org.apache.commons.lang.StringUtils
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -21,7 +24,16 @@ for(WebElement vehicleElement: vehicleElements){
 					thumbnailUrl: vehicleElement.findElement(By.cssSelector(".resp-holder img")).getAttribute("src")]
 } 
 
+GroovyUtils.mergeExistingJSONIntoVehicleObjects("./export/car/audi-gallery.json", vehicleObjects);
+
 for(def vehicleObject : vehicleObjects){
+	if(!vehicleObject.images && !vehicleObject.interiorImages && !vehicleObject.exteriorImages){
+		updateVehicleImages(driver, vehicleObject)
+	}
+}
+GroovyUtils.exportToJsonFile(vehicleObjects, "./export/car/audi-gallery.json")
+
+private updateVehicleImages(WebDriver driver, vehicleObject) {
 	driver.get(vehicleObject.url)
 	for(int i = 0; i < 5; i++){
 		try{
@@ -42,12 +54,7 @@ for(def vehicleObject : vehicleObjects){
 		}catch(Exception ex){
 			driver.navigate().refresh();
 		}
-	
+
 	}
+	return vehicleObject
 }
-def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: vehicleObjects])
-def file = new File("./export/car/audi-gallery.json")
-if(file.exists()){
-	file.delete();
-}
-file << json.toPrettyString()

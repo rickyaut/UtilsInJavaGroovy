@@ -24,7 +24,15 @@ for(WebElement vehicleElement: vehicleElements){
 					thumbnailUrl: vehicleThumbnailURL]
 } 
 
+GroovyUtils.mergeExistingJSONIntoVehicleObjects("./export/car/holden-gallery.json", vehicleObjects);
 for(def vehicleObject : vehicleObjects){
+	if(!vehicleObject.images && !vehicleObject.interiorImages && !vehicleObject.exteriorImages){
+		updateVehicleImages(driver, vehicleObject)
+	}
+}
+GroovyUtils.exportToJsonFile(vehicleObjects, "./export/car/holden-gallery.json")
+
+private updateVehicleImages(WebDriver driver, vehicleObject) {
 	driver.get(vehicleObject.url)
 	def exteriorImages = []
 	for(def imageElement : driver.findElements(By.cssSelector(".mainCarousel li.exterior img "))){
@@ -38,10 +46,5 @@ for(def vehicleObject : vehicleObjects){
 		interiorImages<<[description: imageElement.getAttribute("alt"), thumbnailUrl: src+"&image.resize.width=148&image.resize.height=96", imageUrl: src ]
 	}
 	vehicleObject<<[interiorImages: interiorImages]
+	return vehicleObject
 }
-def json = new groovy.json.JsonBuilder([lastUpdate: new Date().format("yyyy-MM-dd"), vehicles: vehicleObjects])
-def file = new File("./export/car/holden-gallery.json")
-if(file.exists()){
-	file.delete();
-}
-file << json.toPrettyString()
