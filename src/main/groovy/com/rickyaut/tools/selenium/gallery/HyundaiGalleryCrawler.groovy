@@ -19,7 +19,7 @@ for(WebElement vehicleElement: vehicleElements){
 GroovyUtils.mergeExistingJSONIntoVehicleObjects("./export/car/hyundai-gallery.json", vehicleObjects);
 
 for(def vehicleObject : vehicleObjects){
-	if(!vehicleObject.images && !vehicleObject.interiorImages && !vehicleObject.exteriorImages){
+	if((!vehicleObject.images||vehicleObject.images?.isEmpty()) && (!vehicleObject.interiorImages|| vehicleObject.interiorImages?.isEmpty()) && (!vehicleObject.exteriorImages|| vehicleObject.exteriorImages?.isEmpty())){
 		updateVehicleImages(driver, vehicleObject)
 	}
 }
@@ -31,9 +31,11 @@ private updateVehicleImages(WebDriver driver, vehicleObject) {
 		driver.findElement(By.linkText("GALLERY")).click();
 		def images = []
 		for(def element : driver.findElements(By.cssSelector("#vehicle_gallery .has_shadow a.image_hover"))){
-			images<<[description: element.getAttribute("title"),
-				thumbnailUrl: element.findElement(By.cssSelector("img")).getAttribute("src"),
-				imageUrl: element.getAttribute("href") ]
+			if(element.getAttribute("href").indexOf("youtube")<0){
+				images<<[description: element.getAttribute("title"),
+					thumbnailUrl: element.findElement(By.cssSelector("img")).getAttribute("src"),
+					imageUrl: element.getAttribute("href") ]
+			}
 		}
 		vehicleObject<<[images: images]
 		return vehicleObject
